@@ -1,0 +1,416 @@
+/* Genel Stiller */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f6f9fc 0%, #eef2f7 100%);
+    color: #2c3e50;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Ana Sayfa Stilleri */
+.panel-page {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Kenar Çubuğu Stilleri */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(180deg, #1a2a3a 0%, #2c3e50 100%);
+    color: white;
+    padding: 25px 0;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.sidebar-header {
+    padding: 0 25px;
+    margin-bottom: 35px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sidebar-header i {
+    font-size: 32px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.sidebar-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-item {
+    padding: 15px 25px;
+    color: #ecf0f1;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    margin: 5px 0;
+    border-radius: 0 25px 25px 0;
+    margin-right: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(52,152,219,0.1), rgba(46,204,113,0.1));
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover::before, .nav-item.active::before {
+    transform: translateX(0);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #3498db;
+    transform: translateX(5px);
+}
+
+.nav-item i {
+    width: 24px;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-item.logout {
+    margin-top: auto;
+    color: #e74c3c;
+}
+
+/* Ana İçerik Alanı */
+.main-content {
+    flex: 1;
+    margin-left: 280px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(246,249,252,0.8) 0%, rgba(238,242,247,0.8) 100%);
+    min-height: 100vh;
+}
+
+/* Profil Container */
+.profil-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Profil Header */
+.profil-header {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.profil-avatar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.profil-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.avatar-degistir {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(52,152,219,0.3);
+    transition: all 0.3s ease;
+}
+
+.avatar-degistir:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(52,152,219,0.4);
+}
+
+.profil-info {
+    flex: 1;
+}
+
+.profil-info h2 {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.uye-durumu {
+    display: inline-block;
+    padding: 8px 20px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(52,152,219,0.2);
+}
+
+/* Profil Content */
+.profil-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Form Stilleri */
+.profil-form-container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.modern-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #2c3e50;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group label i {
+    color: #3498db;
+}
+
+.form-group input {
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.9);
+}
+
+.form-group input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52,152,219,0.1);
+    outline: none;
+}
+
+.btn-primary {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(52,152,219,0.2);
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52,152,219,0.3);
+}
+
+/* İstatistikler */
+.profil-istatistikler {
+    background: rgba(255,255,255,0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.profil-istatistikler h3 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.istatistik-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.istatistik-card {
+    background: rgba(248,249,250,0.9);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.istatistik-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.istatistik-card i {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(52,152,219,0.2);
+}
+
+.istatistik-detay {
+    display: flex;
+    flex-direction: column;
+}
+
+.istatistik-detay .sayi {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.istatistik-detay .baslik {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 1200px) {
+    .profil-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px;
+    }
+    
+    .sidebar-header h3,
+    .nav-item span {
+        display: none;
+    }
+    
+    .main-content {
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+    
+    .profil-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .istatistik-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+    }
+    
+    .profil-header {
+        padding: 20px;
+    }
+    
+    .profil-avatar {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .profil-info h2 {
+        font-size: 24px;
+    }
+    
+    .profil-form-container,
+    .profil-istatistikler {
+        padding: 20px;
+    }
+}

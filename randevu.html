@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randevu İşlemleri - Kütüphane Yönetim Sistemi</title>
+    <link rel="stylesheet" href="randevu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-book-reader"></i>
+            <h3>Kütüphane Sistemi</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="kitap-islemleri.html" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Kitap İşlemleri</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Randevu İşlemleri</span>
+            </a>
+            <a href="profil.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profil</span>
+            </a>
+            <a href="index.html" class="nav-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Çıkış Yap</span>
+            </a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Randevu İşlemleri</h1>
+                <p>Kütüphane çalışma alanları için randevu oluşturun</p>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="randevu-form-container">
+                <form class="randevu-form">
+                    <div class="form-group">
+                        <label for="tarih">Tarih</label>
+                        <input type="date" id="tarih" name="tarih" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="saat">Saat</label>
+                        <select id="saat" name="saat" required>
+                            <option value="">Saat Seçin</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="calismaAlani">Çalışma Alanı</label>
+                        <select id="calismaAlani" name="calismaAlani" required>
+                            <option value="">Alan Seçin</option>
+                            <option value="Sessiz Çalışma Alanı">Sessiz Çalışma Alanı</option>
+                            <option value="Grup Çalışma Odası">Grup Çalışma Odası</option>
+                            <option value="Bilgisayar Odası">Bilgisayar Odası</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-posta Adresi</label>
+                        <input type="email" id="email" name="email" required placeholder="Bildirimler için e-posta adresiniz">
+                    </div>
+                    <div class="form-group">
+                        <label for="notlar">Notlar</label>
+                        <textarea id="notlar" name="notlar" rows="3" placeholder="Varsa özel isteklerinizi belirtin..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Randevu Oluştur</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="randevu-listesi">
+                <h3>Randevularım</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="tumu">Tümü</button>
+                    <button class="filter-btn" data-filter="bugun">Bugün</button>
+                    <button class="filter-btn" data-filter="gelecek">Gelecek</button>
+                    <button class="filter-btn" data-filter="gecmis">Geçmiş</button>
+                </div>
+                <div class="randevu-cards">
+                    <!-- Randevular JavaScript ile doldurulacak -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="randevu.js"></script>
+</body>
+</html>

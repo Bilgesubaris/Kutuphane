@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Kütüphane Yönetim Sistemi</title>
+    <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="panel-page">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-book-reader"></i>
+            <h3>Kütüphane Sistemi</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="kitap-islemleri.html" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Kitap İşlemleri</span>
+            </a>
+            <a href="randevu.html" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Randevu İşlemleri</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <i class="fas fa-user"></i>
+                <span>Profil</span>
+            </a>
+            <a href="index.html" class="nav-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Çıkış Yap</span>
+            </a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <div class="profil-container">
+            <div class="profil-header">
+                <div class="profil-avatar">
+                    <img src="https://ui-avatars.com/api/?name=Öğrenci&background=2c3e50&color=fff" alt="Profil Resmi">
+                    <button class="avatar-degistir">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="profil-info">
+                    <h2>Profil Bilgileri</h2>
+                    <p class="uye-durumu">Öğrenci Üye</p>
+                </div>
+            </div>
+
+            <div class="profil-content">
+                <div class="profil-form-container">
+                    <form id="profilForm" class="modern-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-user"></i> Ad Soyad</label>
+                                <input type="text" id="adSoyad" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-id-card"></i> Öğrenci Numarası</label>
+                                <input type="text" id="ogrenciNo" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-envelope"></i> E-posta</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-phone"></i> Telefon</label>
+                                <input type="tel" id="telefon" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label><i class="fas fa-lock"></i> Yeni Şifre</label>
+                                <input type="password" id="yeniSifre">
+                            </div>
+                            <div class="form-group">
+                                <label><i class="fas fa-lock"></i> Şifre Tekrar</label>
+                                <input type="password" id="sifreTekrar">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Değişiklikleri Kaydet
+                        </button>
+                    </form>
+                </div>
+
+                <div class="profil-istatistikler">
+                    <h3>Kütüphane İstatistikleri</h3>
+                    <div class="istatistik-grid">
+                        <div class="istatistik-card">
+                            <i class="fas fa-book"></i>
+                            <div class="istatistik-detay">
+                                <span class="sayi">5</span>
+                                <span class="baslik">Ödünç Alınan Kitaplar</span>
+                            </div>
+                        </div>
+                        <div class="istatistik-card">
+                            <i class="fas fa-calendar-check"></i>
+                            <div class="istatistik-detay">
+                                <span class="sayi">3</span>
+                                <span class="baslik">Randevular</span>
+                            </div>
+                        </div>
+                        <div class="istatistik-card">
+                            <i class="fas fa-clock"></i>
+                            <div class="istatistik-detay">
+                                <span class="sayi">0</span>
+                                <span class="baslik">Geciken Teslimler</span>
+                            </div>
+                        </div>
+                        <div class="istatistik-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <div class="istatistik-detay">
+                                <span class="sayi">2</span>
+                                <span class="baslik">Satın Alınan Kitaplar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="profil.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Girişi - Kütüphane Yönetim Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <h2>Admin Girişi</h2>
+        <form id="adminGirisForm">
+            <div class="form-group">
+                <label for="adminKullaniciAdi">Admin Kullanıcı Adı:</label>
+                <input type="text" id="adminKullaniciAdi" required>
+            </div>
+            <div class="form-group">
+                <label for="adminSifre">Admin Şifre:</label>
+                <input type="password" id="adminSifre" required>
+            </div>
+            <button type="submit">Giriş Yap</button>
+        </form>
+        <div class="login-links">
+            <a href="index.html">Ana Sayfa</a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+    document.getElementById('adminGirisForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        window.location.href = 'admin-panel.html';
+    });
+    </script>
+</body>
+</html>

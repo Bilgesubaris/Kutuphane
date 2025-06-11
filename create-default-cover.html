@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Varsayılan Kitap Kapağı Oluşturucu</title>
+</head>
+<body>
+    <canvas id="coverCanvas" width="300" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('coverCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Arka plan
+        ctx.fillStyle = '#2c3e50';
+        ctx.fillRect(0, 0, 300, 400);
+
+        // Kitap başlığı
+        ctx.fillStyle = '#ecf0f1';
+        ctx.font = 'bold 24px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Kitap Kapağı', 150, 200);
+
+        // Alt başlık
+        ctx.font = '16px Arial';
+        ctx.fillText('Kütüphane Yönetim Sistemi', 150, 230);
+
+        // İndirme bağlantısı
+        const link = document.createElement('a');
+        link.download = 'default-cover.jpg';
+        link.href = canvas.toDataURL('image/jpeg');
+        link.textContent = 'Varsayılan Kapağı İndir';
+        document.body.appendChild(link);
+    </script>
+</body>
+</html> 

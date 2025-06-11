@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randevu Yönetimi - Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Admin Paneli</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="admin-panel.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Ana Sayfa</span>
+            </a>
+            <a href="admin-panel.html" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Kitap Yönetimi</span>
+            </a>
+            <a href="admin-randevular.html" class="nav-item active">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Randevu Yönetimi</span>
+            </a>
+            <a href="admin-panel.html" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Kullanıcı Yönetimi</span>
+            </a>
+            <a href="index.html" class="nav-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Çıkış Yap</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Randevu Yönetimi</h1>
+                <p>Tüm randevuları görüntüleyin ve yönetin</p>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="filter-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Randevu ara...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="tumu">Tümü</button>
+                    <button class="filter-btn" data-filter="beklemede">Bekleyen</button>
+                    <button class="filter-btn" data-filter="onaylandi">Onaylanan</button>
+                    <button class="filter-btn" data-filter="reddedildi">Reddedilen</button>
+                    <button class="filter-btn" data-filter="iptal">İptal Edilen</button>
+                </div>
+            </div>
+
+            <div class="randevu-listesi">
+                <div class="randevu-cards">
+                    <!-- Randevular JavaScript ile doldurulacak -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="admin-randevular.js"></script>
+</body>
+</html> 

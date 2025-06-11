@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitap İşlemleri - Kütüphane Yönetim Sistemi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="kitap-islemleri.css">
+</head>
+<body>
+    <div class="panel-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-book-reader"></i>
+                <h3>Kütüphane</h3>
+            </div>
+            <nav class="sidebar-nav">
+               
+                <a href="kitap-islemleri.html" class="nav-item active">
+                    <i class="fas fa-book"></i>
+                    <span>Kitap İşlemleri</span>
+                </a>
+                <a href="randevu.html" class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Randevular</span>
+                </a>
+                <a href="profil.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profil</span>
+                </a>
+                
+                <a href="index.html" class="nav-item logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Çıkış Yap</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Ana İçerik -->
+        <div class="main-content">
+            <!-- Üst Başlık -->
+            <div class="top-header">
+                <div class="header-title">
+                    <h1>Kitap İşlemleri</h1>
+                    <p>Kütüphane koleksiyonundaki kitapları yönetin</p>
+                </div>
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="kitapArama" placeholder="Kitap adı, yazar veya ISBN ile arama yapın...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="tum">
+                        <i class="fas fa-th-large"></i>
+                        Tümü
+                    </button>
+                    <button class="filter-btn" data-filter="mevcut">
+                        <i class="fas fa-check-circle"></i>
+                        Mevcut
+                    </button>
+                    <button class="filter-btn" data-filter="odunc">
+                        <i class="fas fa-book-reader"></i>
+                        Ödünç
+                    </button>
+                    <button class="filter-btn" data-filter="geciken">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Geciken
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kitap Grid -->
+            <div id="kitapGrid" class="kitap-grid">
+                <!-- Kitap kartları JavaScript ile doldurulacak -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Kitap Detay Modal -->
+    <div id="kitapDetayModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="kitap-detay">
+                <div class="kitap-kapak">
+                    <img id="kitapKapak" src="" alt="Kitap Kapağı">
+                </div>
+                <div class="kitap-bilgi">
+                    <h2 id="kitapAdi"></h2>
+                    <div class="kitap-ozellikler">
+                        <p><i class="fas fa-user"></i> <span id="yazarAdi"></span></p>
+                        <p><i class="fas fa-barcode"></i> <span id="isbnNo"></span></p>
+                        <p><i class="fas fa-info-circle"></i> <span id="kitapDurum"></span></p>
+                        <p><i class="fas fa-tag"></i> <span id="kitapFiyat"></span> TL</p>
+                        <p><i class="fas fa-clock"></i> Teslim Süresi: <span id="teslimSuresi"></span> gün</p>
+                        <p><i class="fas fa-exclamation-triangle"></i> Gecikme Bedeli: <span id="gecikmeBedeli"></span> TL/gün</p>
+                    </div>
+                    <div class="islem-butonlari">
+                        <button id="oduncAlBtn" class="btn-primary odunc-al">
+                            <i class="fas fa-book-reader"></i>
+                            Ödünç Al
+                        </button>
+                        <button id="satinAlBtn" class="btn-primary satin-al">
+                            <i class="fas fa-shopping-cart"></i>
+                            Satın Al
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="kitap-islemleri.js"></script>
+</body>
+</html>

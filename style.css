@@ -1,0 +1,631 @@
+/* Global Reset & Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Lighter, cleaner background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+.header {
+    background-color: #2c3e50; /* Primary color */
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.main-nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-button {
+    padding: 0.6rem 1.2rem;
+    background-color: #ffffff; /* White buttons on dark header */
+    color: #2c3e50;
+    border: 1px solid #2c3e50;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-button:hover {
+    background-color: #34495e; /* Darker shade of primary for hover */
+    color: white;
+    transform: translateY(-2px);
+}
+
+.nav-button i {
+    font-size: 0.9em;
+}
+
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #e8f5e9; /* Light green, pleasant for a welcome */
+    color: #2c3e50;
+    border-bottom: 1px solid #dde;
+}
+
+.hero-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Features Section */
+.features {
+    padding: 3rem 0; /* Use container padding */
+}
+
+.features .container { /* Ensure features content is also containerized */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.feature-card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* General Button Style (for forms, etc.) */
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: #2c3e50; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #34495e; /* Darker shade for hover */
+    transform: translateY(-2px);
+}
+
+/* Modal Stilleri */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000; /* Ensure modals are on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent backdrop */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto; /* Vertically centered a bit lower */
+    padding: 2.5rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative; /* For close button positioning */
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #333;
+    text-decoration: none;
+}
+
+/* Form Stilleri (basic enhancements) */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* Increased gap */
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+    border-color: #2c3e50; /* Highlight with primary color */
+    box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+    outline: none;
+}
+
+/* Tablo Stilleri (basic enhancements) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #f0f2f5; /* Lighter header for table */
+    color: #2c3e50;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+    background-color: #222f3e; /* Darker footer */
+    color: #aaa;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* İşlem Menüsü (Library internal nav) - Basic styling for now */
+.islem-menu {
+    background-color: #34495e; /* Slightly different shade for internal nav */
+    padding: 1rem 0;
+}
+
+.islem-menu .container { /* Use container for this too */
+    display: flex; /* Using flex on container for centering */
+    justify-content: center;
+}
+
+.islem-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1.5rem; /* Spacing between menu items */
+}
+
+.islem-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.islem-menu a:hover {
+    background-color: #2c3e50; /* Primary color for hover */
+}
+
+
+/* Utility */
+.hidden {
+    display: none !important; /* Ensure it overrides other display properties */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .nav-button {
+        width: 100%;
+        justify-content: center; /* Center text and icon in button */
+    }
+    
+    .hero-section h2 {
+        font-size: 2rem;
+    }
+
+    .features .container {
+        grid-template-columns: 1fr; /* Stack feature cards on smaller screens */
+    }
+
+    .modal-content {
+        margin: 20% auto; /* Adjust margin for smaller screens */
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    .hero-section {
+        padding: 3rem 1rem;
+    }
+    .hero-section h2 {
+        font-size: 1.8rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .feature-card {
+        padding: 1.5rem;
+    }
+    .modal-content {
+        padding: 1.5rem;
+    }
+    button { /* Slightly smaller padding for buttons on small screens */
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+/* Styles for login.html and admin-login.html (largely kept from original if not conflicting) */
+/* Basic styles from the original file that are for separate login pages might be kept below, */
+/* ensuring they don't conflict with the main page's new professional look. */
+/* If specific login page styling is needed, it can be refined here. */
+
+/* For example, if .login-page, .login-container etc. are only on login.html, they can remain. */
+/* However, general tags like 'button' or 'input' are now styled more globally. */
+
+.login-page {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.login-page::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%);
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.login-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.login-header i {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: #1e3c72;
+    opacity: 0.9;
+}
+
+.login-header h2 {
+    margin: 0.5rem 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #1e3c72;
+    letter-spacing: -0.5px;
+}
+
+.login-header p {
+    color: #666;
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #1e3c72;
+    font-size: 1.1rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    width: 20px;
+    text-align: center;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 45px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+    color: #333;
+    box-sizing: border-box;
+    height: 45px;
+}
+
+.input-group input:focus {
+    border-color: #1e3c72;
+    box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+    background: #fff;
+}
+
+.input-group input:focus + i {
+    opacity: 1;
+    color: #1e3c72;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5rem auto;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #1e3c72;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remember-me input[type="checkbox"]:checked {
+    background-color: #1e3c72;
+}
+
+.forgot-password {
+    color: #1e3c72;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: #2a5298;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    background: #1e3c72;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(30, 60, 114, 0.2);
+    box-sizing: border-box;
+    height: 45px;
+}
+
+.login-btn:hover {
+    background: #2a5298;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 60, 114, 0.3);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.login-footer a {
+    color: #1e3c72;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.login-footer a:hover {
+    color: #2a5298;
+    text-decoration: none;
+}
+
+.back-home {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    margin-top: 1rem;
+    color: #1e3c72;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    background: rgba(30, 60, 114, 0.05);
+    box-sizing: border-box;
+}
+
+.back-home:hover {
+    color: #2a5298;
+    background: rgba(30, 60, 114, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .input-group {
+        max-width: 100%;
+    }
+    
+    .form-options {
+        max-width: 100%;
+    }
+    
+    .login-btn {
+        max-width: 100%;
+    }
+}
+
+/* Panel Page Stilleri (Keep distinct if they are for a separate section) */
+/* These might need review if the panel shares common elements with index.html */
+.panel-page {
+    background: #f5f5f5;
+}
+
+.sidebar {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    /* ... other sidebar styles ... */
+}
+
+.sidebar-header {
+    color: white;
+}
+
+.nav-item { /* For sidebar navigation */
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    padding: 0.8rem 1rem; /* Example padding */
+    display: block;
+    text-decoration: none;
+}
+
+.nav-item:hover, .nav-item.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* It seems there were many duplications and some conflicting styles later in the original file. */
+/* The styles above are an attempt to consolidate and create a professional look for index.html */
+/* while trying to preserve distinct styles for login/panel pages. */
+/* Further cleanup might be needed if there are more specific pages/components. */

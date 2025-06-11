@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Paneli - Kütüphane Yönetim Sistemi</title>
+    <link rel="stylesheet" href="ogrenci-panel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-book-reader"></i>
+            <h3>Öğrenci Paneli</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="kitap-islemleri.html" class="nav-item">
+                <i class="fas fa-book"></i>
+                <span>Kitap İşlemleri</span>
+            </a>
+            <a href="randevu.html" class="nav-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Randevu İşlemleri</span>
+            </a>
+            <a href="profil.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profil</span>
+            </a>
+            <a href="index.html" class="nav-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Çıkış Yap</span>
+            </a>
+        </nav>
+    </div>
+
+    <main class="main-content">
+        <header class="top-header">
+            <div class="header-title">
+                <h1>Hoş Geldiniz</h1>
+                <p>Kütüphane yönetim sistemine hoş geldiniz</p>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Kitap İşlemleri</h3>
+                        <p>Kitap arama, ödünç alma ve satın alma işlemlerinizi yapın</p>
+                        <a href="kitap-islemleri.html" class="card-link">Kitap İşlemlerine Git</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Randevu İşlemleri</h3>
+                        <p>Çalışma alanları için randevu oluşturun ve yönetin</p>
+                        <a href="randevu.html" class="card-link">Randevu İşlemlerine Git</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Profil</h3>
+                        <p>Profil bilgilerinizi görüntüleyin ve düzenleyin</p>
+                        <a href="profil.html" class="card-link">Profile Git</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h2>Son Aktiviteler</h2>
+                <div class="activity-list" id="activityList">
+                    <!-- Aktiviteler JavaScript ile doldurulacak -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="ogrenci-panel.js"></script>
+</body>
+</html>

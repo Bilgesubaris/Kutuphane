@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kütüphane Yönetim Sistemi - Kitapları keşfedin, ödünç alın ve yönetin.">
+    <title>Kütüphane Yönetim Sistemi - Ana Sayfa</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Kütüphane Yönetim Sistemi</h1>
+            <nav class="main-nav">
+                <a href="login.html" class="nav-button"><i class="fas fa-user-graduate"></i> Öğrenci Girişi</a>
+                <a href="admin-login.html" class="nav-button"><i class="fas fa-user-shield"></i> Admin Girişi</a>
+            </nav>
+    </div>
+    </header>
+
+    <main>
+    <!-- Ana Sayfa İçeriği -->
+    <div id="anaSayfa">
+            <section class="hero-section">
+                <div class="container">
+            <h2>Hoş Geldiniz!</h2>
+            <p>Modern ve kullanıcı dostu kütüphane yönetim sistemimize hoş geldiniz.</p>
+        </div>
+            </section>
+
+            <section class="features">
+                <div class="container">
+            <div class="feature-card">
+                <h3>Geniş Koleksiyon</h3>
+                <p>Binlerce kitap arasından seçim yapın</p>
+            </div>
+            <div class="feature-card">
+                <h3>Kolay Ödünç Alma</h3>
+                <p>Tek tıkla kitap ödünç alın</p>
+            </div>
+            <div class="feature-card">
+                <h3>Online Katalog</h3>
+                <p>Kitapları online olarak arayın</p>
+            </div>
+        </div>
+            </section>
+    </div>
+
+    <!-- Giriş Modalları -->
+    <div id="kullaniciGirisModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Kullanıcı Girişi</h2>
+            <form id="kullaniciGirisForm">
+                <input type="text" id="kullaniciAdi" placeholder="Kullanıcı Adı" required>
+                <input type="password" id="kullaniciSifre" placeholder="Şifre" required>
+                <button type="submit">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminGirisModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Admin Girişi</h2>
+            <form id="adminGirisForm">
+                <input type="text" id="adminKullaniciAdi" placeholder="Admin Kullanıcı Adı" required>
+                <input type="password" id="adminSifre" placeholder="Admin Şifre" required>
+                <button type="submit">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Kütüphane İçeriği (Giriş Sonrası) -->
+    <div id="kutuphaneIcerik" class="hidden">
+        <nav class="islem-menu">
+            <ul>
+                <li><a href="#" id="kitaplarLink">Kitaplar</a></li>
+                <li><a href="#" id="oduncLink">Ödünç İşlemleri</a></li>
+                <li><a href="#" id="profilLink">Profil</a></li>
+                <li><a href="#" id="cikisLink">Çıkış</a></li>
+            </ul>
+        </nav>
+
+        <div class="arama-kutusu">
+            <input type="text" id="aramaKutusu" placeholder="Kitap ara...">
+        </div>
+
+        <div id="kitapYonetimPaneli" class="hidden">
+            <form id="kitapForm">
+                <input type="text" id="kitapAdi" placeholder="Kitap Adı" required>
+                <input type="text" id="yazar" placeholder="Yazar" required>
+                <input type="text" id="isbn" placeholder="ISBN" required>
+                <select id="durum" required>
+                    <option value="Mevcut">Mevcut</option>
+                    <option value="Ödünç Verildi">Ödünç Verildi</option>
+                </select>
+                <button type="submit">Kitap Ekle</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kitap Adı</th>
+                        <th>Yazar</th>
+                        <th>ISBN</th>
+                        <th>Durum</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody id="kitapListesi"></tbody>
+            </table>
+        </div>
+    </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Kütüphane Yönetim Sistemi. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

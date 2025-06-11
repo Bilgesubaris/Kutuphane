@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneli - Kütüphane Yönetim Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="panel-page">
+    <div class="sidebar" id="adminSidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Admin Paneli</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-target="kitapYonetimiPanel">
+                <i class="fas fa-book"></i>
+                <span>Kitap Yönetimi</span>
+            </a>
+            <a href="#" class="nav-item" data-target="kullaniciYonetimiPanel">
+                <i class="fas fa-users-cog"></i>
+                <span>Kullanıcı Yönetimi</span>
+            </a>
+            <a href="#" class="nav-item" data-target="randevuYonetimiPanel">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Randevu Yönetimi</span>
+            </a>
+            <a href="#" class="nav-item" data-target="oduncTakipPanel">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Ödünç Takibi</span>
+            </a>
+            <a href="#" class="nav-item" data-target="ayarlarPanel">
+                <i class="fas fa-cogs"></i>
+                <span>Ayarlar</span>
+            </a>
+            <a href="index.html" class="nav-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Çıkış Yap</span>
+            </a>
+        </nav>
+    </div>
+
+    <main class="main-content" id="mainContent">
+        <header class="top-header">
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <h2 id="panelBaslik">Kitap Yönetimi</h2>
+            <div class="user-info">
+                <span>Admin</span>
+                <img src="https://ui-avatars.com/api/?name=Admin&background=2c3e50&color=fff" alt="Admin" class="user-avatar">
+            </div>
+        </header>
+
+        <div class="content-area">
+            <!-- Kitap Yönetimi Paneli -->
+            <div id="kitapYonetimiPanel" class="content-panel active">
+                <div class="panel-header">
+                    <h2><i class="fas fa-book"></i> Kitap Yönetimi</h2>
+                </div>
+                <form id="kitapForm" class="modern-form">
+                    <input type="hidden" id="kitapId">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kitapAdi"><i class="fas fa-heading"></i> Kitap Adı</label>
+                            <input type="text" id="kitapAdi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="yazar"><i class="fas fa-user-edit"></i> Yazar</label>
+                            <input type="text" id="yazar" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="isbn"><i class="fas fa-barcode"></i> ISBN</label>
+                            <input type="text" id="isbn" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kategori"><i class="fas fa-tags"></i> Kategori</label>
+                            <input type="text" id="kategori">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                         <div class="form-group">
+                            <label for="yayinYili"><i class="fas fa-calendar-alt"></i> Yayın Yılı</label>
+                            <input type="number" id="yayinYili" min="1000" max="2100">
+                        </div>
+                        <div class="form-group">
+                            <label for="sayfaSayisi"><i class="fas fa-file-alt"></i> Sayfa Sayısı</label>
+                            <input type="number" id="sayfaSayisi" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="stok"><i class="fas fa-cubes"></i> Stok Adedi</label>
+                            <input type="number" id="stok" min="0" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-plus-circle"></i> Kitap Ekle/Güncelle</button>
+                </form>
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Kitap Adı</th>
+                            <th>Yazar</th>
+                            <th>ISBN</th>
+                            <th>Kategori</th>
+                            <th>Yayın Yılı</th>
+                            <th>Sayfa Sayısı</th>
+                            <th>Stok</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kitapListesiAdmin">
+                        <tr data-id="1" data-kategori="Roman" data-yayinYili="1866" data-sayfaSayisi="671">
+                            <td>Suç ve Ceza</td>
+                            <td>Fyodor Dostoyevski</td>
+                            <td>9786053322808</td>
+                            <td>Roman</td>
+                            <td>1866</td>
+                            <td>671</td>
+                            <td>15</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editBook(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteBook(this)"><i class="fas fa-trash"></i> Sil</button>
+                            </td>
+                        </tr>
+                        <tr data-id="2" data-kategori="Distopik Roman" data-yayinYili="1949" data-sayfaSayisi="352">
+                            <td>1984</td>
+                            <td>George Orwell</td>
+                            <td>9789750718537</td>
+                            <td>Distopik Roman</td>
+                            <td>1949</td>
+                            <td>352</td>
+                            <td>22</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editBook(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteBook(this)"><i class="fas fa-trash"></i> Sil</button>
+                            </td>
+                        </tr>
+                        <tr data-id="3" data-kategori="Distopik Roman" data-yayinYili="1945" data-sayfaSayisi="152">
+                            <td>Hayvan Çiftliği</td>
+                            <td>George Orwell</td>
+                            <td>9789750719387</td>
+                            <td>Distopik Roman</td>
+                            <td>1945</td>
+                            <td>152</td>
+                            <td>10</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editBook(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteBook(this)"><i class="fas fa-trash"></i> Sil</button>
+                            </td>
+                        </tr>
+                        <tr data-id="4" data-kategori="Roman" data-yayinYili="1942" data-sayfaSayisi="160">
+                            <td>Yabancı</td>
+                            <td>Albert Camus</td>
+                            <td>9789750720141</td>
+                            <td>Roman</td>
+                            <td>1942</td>
+                            <td>160</td>
+                            <td>12</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editBook(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteBook(this)"><i class="fas fa-trash"></i> Sil</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Kullanıcı Yönetimi Paneli -->
+            <div id="kullaniciYonetimiPanel" class="content-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-users-cog"></i> Kullanıcı Yönetimi</h2>
+                </div>
+                <form id="kullaniciForm" class="modern-form">
+                    <input type="hidden" id="kullaniciId">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kullaniciAdSoyad"><i class="fas fa-user"></i> Ad Soyad</label>
+                            <input type="text" id="kullaniciAdSoyad" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kullaniciEmail"><i class="fas fa-envelope"></i> E-posta</label>
+                            <input type="email" id="kullaniciEmail" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kullaniciKullaniciAdi"><i class="fas fa-user-shield"></i> Kullanıcı Adı</label>
+                            <input type="text" id="kullaniciKullaniciAdi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kullaniciRol"><i class="fas fa-user-tag"></i> Rol</label>
+                            <select id="kullaniciRol" required>
+                                <option value="ogrenci">Öğrenci</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary"><i class="fas fa-user-plus"></i> Kullanıcı Ekle/Güncelle</button>
+                </form>
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Ad Soyad</th>
+                            <th>E-posta</th>
+                            <th>Kullanıcı Adı</th>
+                            <th>Rol</th>
+                            <th>Durum</th>
+                            <th>Son Giriş</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kullaniciListesiAdmin">
+                        <tr data-id="1" data-status="active" data-lastLogin="2024-03-15 14:30">
+                            <td>Ahmet Yılmaz</td>
+                            <td>ahmet.yilmaz@example.com</td>
+                            <td>ahmetyilmaz</td>
+                            <td>Öğrenci</td>
+                            <td><span class="status-active">Aktif</span></td>
+                            <td>15.03.2024 14:30</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editUser(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteUser(this)"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn-sm btn-warning" onclick="toggleUserStatus(this)"><i class="fas fa-ban"></i> Devre Dışı Bırak</button>
+                            </td>
+                        </tr>
+                        <tr data-id="2" data-status="active" data-lastLogin="2024-03-14 09:15">
+                            <td>Ayşe Demir</td>
+                            <td>ayse.demir@example.com</td>
+                            <td>aysedemir</td>
+                            <td>Öğrenci</td>
+                            <td><span class="status-active">Aktif</span></td>
+                            <td>14.03.2024 09:15</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editUser(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteUser(this)"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn-sm btn-warning" onclick="toggleUserStatus(this)"><i class="fas fa-ban"></i> Devre Dışı Bırak</button>
+                            </td>
+                        </tr>
+                        <tr data-id="3" data-status="inactive" data-lastLogin="2024-03-10 16:45">
+                            <td>Mehmet Kaya</td>
+                            <td>mehmet.kaya@example.com</td>
+                            <td>mehmetkaya</td>
+                            <td>Öğrenci</td>
+                            <td><span class="status-inactive">Devre Dışı</span></td>
+                            <td>10.03.2024 16:45</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editUser(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteUser(this)"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn-sm btn-success" onclick="toggleUserStatus(this)"><i class="fas fa-check"></i> Aktifleştir</button>
+                            </td>
+                        </tr>
+                        <tr data-id="4" data-status="active" data-lastLogin="2024-03-15 10:20">
+                            <td>Zeynep Şahin</td>
+                            <td>zeynep.sahin@example.com</td>
+                            <td>zeynepp</td>
+                            <td>Admin</td>
+                            <td><span class="status-active">Aktif</span></td>
+                            <td>15.03.2024 10:20</td>
+                            <td>
+                                <button class="btn-sm btn-primary" onclick="editUser(this)"><i class="fas fa-edit"></i> Düzenle</button>
+                                <button class="btn-sm btn-danger" onclick="deleteUser(this)"><i class="fas fa-trash"></i> Sil</button>
+                                <button class="btn-sm btn-warning" onclick="toggleUserStatus(this)"><i class="fas fa-ban"></i> Devre Dışı Bırak</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Ödünç Takip Paneli -->
+            <div id="oduncTakipPanel" class="content-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-exchange-alt"></i> Ödünç Takip Sistemi</h2>
+                    <div class="panel-actions">
+                        <button class="btn-primary" onclick="showNewLoanForm()">
+                            <i class="fas fa-plus"></i> Yeni Ödünç Verme
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Yeni Ödünç Verme Formu -->
+                <div id="yeniOduncForm" class="modern-form" style="display: none;">
+                    <h3>Yeni Ödünç Verme</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="oduncKitap"><i class="fas fa-book"></i> Kitap</label>
+                            <select id="oduncKitap" required>
+                                <option value="">Kitap Seçin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="oduncKullanici"><i class="fas fa-user"></i> Kullanıcı</label>
+                            <select id="oduncKullanici" required>
+                                <option value="">Kullanıcı Seçin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="oduncAlisTarihi"><i class="fas fa-calendar-plus"></i> Alış Tarihi</label>
+                            <input type="date" id="oduncAlisTarihi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="oduncTeslimTarihi"><i class="fas fa-calendar-check"></i> Teslim Tarihi</label>
+                            <input type="date" id="oduncTeslimTarihi" required>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-primary" onclick="saveNewLoan()">
+                            <i class="fas fa-save"></i> Kaydet
+                        </button>
+                        <button type="button" class="btn-secondary" onclick="hideNewLoanForm()">
+                            <i class="fas fa-times"></i> İptal
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <label for="durumFiltre">Durum:</label>
+                        <select id="durumFiltre" onchange="filterLoans()">
+                            <option value="all">Tümü</option>
+                            <option value="active">Ödünç Verildi</option>
+                            <option value="overdue">Geç Kaldı</option>
+                            <option value="returned">İade Edildi</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="tarihFiltre">Tarih Aralığı:</label>
+                        <input type="date" id="baslangicTarih" onchange="filterLoans()">
+                        <input type="date" id="bitisTarih" onchange="filterLoans()">
+                    </div>
+                </div>
+
+                <table class="modern-table">
+                    <thead>
+                        <tr>
+                            <th>Kitap Adı</th>
+                            <th>Ödünç Alan</th>
+                            <th>Alış Tarihi</th>
+                            <th>Teslim Tarihi</th>
+                            <th>Durum</th>
+                            <th>Ceza Ücreti (TL)</th>
+                            <th>İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody id="oduncListesiAdmin">
+                        <tr data-id="1" data-status="active" data-alis-tarihi="2024-03-01" data-teslim-tarihi="2024-03-16">
+                            <td>Suç ve Ceza</td>
+                            <td>Ahmet Yılmaz (101)</td>
+                            <td>2024-03-01</td>
+                            <td>2024-03-16</td>
+                            <td><span class="status-odunc">Ödünç Verildi</span></td>
+                            <td data-penalty="0">-</td>
+                            <td>
+                                <button class="btn-sm btn-success" onclick="markAsReturned(this)"><i class="fas fa-check-circle"></i> İade Al</button>
+                                <button class="btn-sm btn-info" onclick="viewLoanDetails(this)"><i class="fas fa-info-circle"></i> Detay</button>
+                                <button class="btn-sm btn-warning" onclick="extendLoan(this)"><i class="fas fa-clock"></i> Süre Uzat</button>
+                            </td>
+                        </tr>
+                        <tr data-id="2" data-status="overdue" data-alis-tarihi="2024-02-20" data-teslim-tarihi="2024-03-06">
+                            <td>1984</td>
+                            <td>Ayşe Demir (102)</td>
+                            <td>2024-02-20</td>
+                            <td>2024-03-06</td>
+                            <td><span class="status-gec-kaldi">Geç Kaldı</span></td>
+                            <td data-penalty="2">2 TL</td>
+                            <td>
+                                <button class="btn-sm btn-success" onclick="markAsReturned(this)"><i class="fas fa-check-circle"></i> İade Al</button>
+                                <button class="btn-sm btn-info" onclick="viewLoanDetails(this)"><i class="fas fa-info-circle"></i> Detay</button>
+                                <button class="btn-sm btn-warning" onclick="extendLoan(this)"><i class="fas fa-clock"></i> Süre Uzat</button>
+                            </td>
+                        </tr>
+                        <tr data-id="3" data-status="returned" data-alis-tarihi="2024-02-15" data-teslim-tarihi="2024-03-01">
+                            <td>Hayvan Çiftliği</td>
+                            <td>Mehmet Kaya (103)</td>
+                            <td>2024-02-15</td>
+                            <td>2024-03-01</td>
+                            <td><span class="status-iade-edildi">İade Edildi</span></td>
+                            <td data-penalty="0">-</td>
+                            <td>
+                                <button class="btn-sm btn-info" onclick="viewLoanDetails(this)"><i class="fas fa-info-circle"></i> Detay</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Ayarlar Paneli -->
+            <div id="ayarlarPanel" class="content-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-cogs"></i> Sistem Ayarları</h2>
+                </div>
+                
+                <div class="settings-container">
+                    <!-- Ödünç Verme Ayarları -->
+                    <div class="settings-section">
+                        <h3><i class="fas fa-book-reader"></i> Ödünç Verme Ayarları</h3>
+                        <form id="oduncAyarlariForm" class="modern-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="maxOduncKitap"><i class="fas fa-book"></i> Maksimum Ödünç Kitap Sayısı</label>
+                                    <input type="number" id="maxOduncKitap" min="1" max="10" value="3">
+                                </div>
+                                <div class="form-group">
+                                    <label for="oduncSuresi"><i class="fas fa-clock"></i> Varsayılan Ödünç Süresi (Gün)</label>
+                                    <input type="number" id="oduncSuresi" min="1" max="30" value="15">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="cezaUcreti"><i class="fas fa-money-bill-wave"></i> Günlük Ceza Ücreti (TL)</label>
+                                    <input type="number" id="cezaUcreti" min="0" step="0.5" value="2">
+                                </div>
+                                <div class="form-group">
+                                    <label for="uzatmaHakki"><i class="fas fa-redo"></i> Maksimum Uzatma Hakkı</label>
+                                    <input type="number" id="uzatmaHakki" min="0" max="3" value="1">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Bildirim Ayarları -->
+                    <div class="settings-section">
+                        <h3><i class="fas fa-bell"></i> Bildirim Ayarları</h3>
+                        <form id="bildirimAyarlariForm" class="modern-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="hatirlatmaGunu"><i class="fas fa-calendar-day"></i> İade Hatırlatma Günü</label>
+                                    <input type="number" id="hatirlatmaGunu" min="1" max="7" value="3">
+                                </div>
+                                <div class="form-group">
+                                    <label for="emailBildirim"><i class="fas fa-envelope"></i> E-posta Bildirimleri</label>
+                                    <select id="emailBildirim">
+                                        <option value="aktif">Aktif</option>
+                                        <option value="pasif">Pasif</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="smtpSunucu"><i class="fas fa-server"></i> SMTP Sunucu</label>
+                                    <input type="text" id="smtpSunucu" placeholder="smtp.example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="smtpPort"><i class="fas fa-network-wired"></i> SMTP Port</label>
+                                    <input type="number" id="smtpPort" placeholder="587">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sistem Ayarları -->
+                    <div class="settings-section">
+                        <h3><i class="fas fa-laptop-code"></i> Sistem Ayarları</h3>
+                        <form id="sistemAyarlariForm" class="modern-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="dilSecimi"><i class="fas fa-language"></i> Sistem Dili</label>
+                                    <select id="dilSecimi">
+                                        <option value="tr">Türkçe</option>
+                                        <option value="en">English</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="temaSecimi"><i class="fas fa-palette"></i> Tema</label>
+                                    <select id="temaSecimi">
+                                        <option value="light">Açık Tema</option>
+                                        <option value="dark">Koyu Tema</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="yedeklemeSikligi"><i class="fas fa-database"></i> Yedekleme Sıklığı</label>
+                                    <select id="yedeklemeSikligi">
+                                        <option value="daily">Günlük</option>
+                                        <option value="weekly">Haftalık</option>
+                                        <option value="monthly">Aylık</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="oturumSuresi"><i class="fas fa-hourglass-half"></i> Oturum Süresi (Dakika)</label>
+                                    <input type="number" id="oturumSuresi" min="5" max="120" value="30">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Yedekleme ve Güvenlik -->
+                    <div class="settings-section">
+                        <h3><i class="fas fa-shield-alt"></i> Yedekleme ve Güvenlik</h3>
+                        <div class="settings-actions">
+                            <button class="btn-primary" onclick="yedekAl()">
+                                <i class="fas fa-download"></i> Veritabanı Yedeği Al
+                            </button>
+                            <button class="btn-secondary" onclick="yedekYukle()">
+                                <i class="fas fa-upload"></i> Yedek Yükle
+                            </button>
+                            <button class="btn-warning" onclick="sifreDegistir()">
+                                <i class="fas fa-key"></i> Admin Şifresi Değiştir
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Kaydet Butonu -->
+                    <div class="settings-actions">
+                        <button class="btn-primary" onclick="ayarlariKaydet()">
+                            <i class="fas fa-save"></i> Tüm Ayarları Kaydet
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Randevu Yönetimi Paneli -->
+            <div id="randevuYonetimiPanel" class="content-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Randevu Yönetimi</h2>
+                </div>
+
+                <div class="filter-section">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="Randevu ara...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="tumu">Tümü</button>
+                        <button class="filter-btn" data-filter="beklemede">Bekleyen</button>
+                        <button class="filter-btn" data-filter="onaylandi">Onaylanan</button>
+                        <button class="filter-btn" data-filter="reddedildi">Reddedilen</button>
+                        <button class="filter-btn" data-filter="iptal">İptal Edilen</button>
+                    </div>
+                </div>
+
+                <div class="randevu-listesi">
+                    <div class="randevu-cards">
+                        <!-- Randevular JavaScript ile doldurulacak -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navItems = document.querySelectorAll('.sidebar-nav .nav-item:not(.logout)');
+            const contentPanels = document.querySelectorAll('.main-content .content-panel');
+            const panelBaslik = document.getElementById('panelBaslik');
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('adminSidebar');
+            const mainContent = document.getElementById('mainContent');
+
+            // Panel Navigation Logic
+            navItems.forEach(item => {
+                item.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    navItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    const targetPanelId = this.getAttribute('data-target');
+                    contentPanels.forEach(panel => {
+                        panel.classList.toggle('active', panel.id === targetPanelId);
+                    });
+                    panelBaslik.textContent = this.querySelector('span').textContent;
+                    // If on mobile, close sidebar after navigation
+                    if (window.innerWidth <= 992) {
+                        sidebar.classList.remove('active');
+                    }
+                });
+            });
+
+            // Sidebar Toggle Logic
+            menuToggle.addEventListener('click', function() {
+                if (window.innerWidth <= 992) { // Mobile/Tablet: Toggle sidebar visibility
+                    sidebar.classList.toggle('active');
+                } else { // Desktop: Toggle sidebar collapsed state
+                    sidebar.classList.toggle('collapsed');
+                    mainContent.classList.toggle('sidebar-collapsed');
+                }
+            });
+
+            // Activate the first panel by default
+            if (navItems.length > 0) {
+                navItems[0].click();
+            }
+        });
+    </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="admin-script.js"></script>
+    <script src="admin-randevular.js"></script>
+
+    <!-- Loan Details Modal -->
+    <div id="loanDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loanDetailsModal')">&times;</span>
+            <h3><i class="fas fa-info-circle"></i> Ödünç Detayları</h3>
+            <table class="modal-table">
+                <tr>
+                    <td><strong>Kitap Adı:</strong></td>
+                    <td id="modalKitapAdi"></td>
+                </tr>
+                <tr>
+                    <td><strong>Ödünç Alan:</strong></td>
+                    <td id="modalOduncAlan"></td>
+                </tr>
+                <tr>
+                    <td><strong>Alış Tarihi:</strong></td>
+                    <td id="modalAlisTarihi"></td>
+                </tr>
+                <tr>
+                    <td><strong>Teslim Tarihi:</strong></td>
+                    <td id="modalTeslimTarihi"></td>
+                </tr>
+                <tr>
+                    <td><strong>Durum:</strong></td>
+                    <td id="modalDurum"></td>
+                </tr>
+                <tr>
+                    <td><strong>Ceza Ücreti:</strong></td>
+                    <td id="modalCezaUcreti"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="admin-randevular.js"></script>
+</body>
+</html> 
